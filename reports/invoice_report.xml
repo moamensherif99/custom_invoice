@@ -1,0 +1,24 @@
+<odoo>
+    <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+        <xpath expr="//table[@class='table table-sm o_main_table table-borderless']" position="inside">
+            <thead>
+                <tr>
+                    <th name="th_campaign" class="text-start"><span>Campaign</span></th>
+                </tr>
+            </thead>
+            <tbody class="invoice_tbody">
+                <t t-foreach="docs" t-as="o">
+                    <td><t t-esc="o.campaign_id.name"/></td>
+                </t>
+            </tbody>
+
+        </xpath>
+        <xpath expr="//table[@class='table table-sm o_main_table table-borderless']" position="after">
+            <t t-foreach="docs" t-as="o">
+                <strong>
+                    Salesperson : <t t-esc="o.invoice_user_id.name"/>
+                </strong>
+            </t>
+        </xpath>
+    </template>
+</odoo>
